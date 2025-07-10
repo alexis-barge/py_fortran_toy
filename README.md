@@ -23,6 +23,7 @@ For instance:
 
 ```bash
 cd fortran_src
+make
 ```
   - **make** : compile solver as executable from sources
   - **make lib** : compile solver as shared library ``libparticules.so``
@@ -42,8 +43,11 @@ cd fortran_src
 **Compile Python bindings**
 
 ```bash
-cd py_bind
+cd fortran_src
+make lib
+cd ../py_bind
 # Edit $(DIR) in Makefile in accordance with your machine
+make
 ```
   - **make** : compile Cython sources as Python module ``py_particules.cpython-<...>.so``
   - **make prog** : execute parallelized Python program ``main.py`` that executes Toy Model from Python wrapper
@@ -58,7 +62,11 @@ Useless to wrapp Toy Model in Python. C sources are just here to show how to use
 **Compile C sources**
 
 ```bash
-cd cbind
+cd fortran_src
+make lib
+cd ../cbind
+make lib
+make
 ```
   - **make lib** : compile C wrapper of the Fortran layer as shared library ``libparticules_cbind.so``
   - **make** : compile C program that executes Toy Model from C wrapper (parallelized)
