@@ -1,4 +1,5 @@
 NP=3
+DIR=/home/bargea.linux/py_fortran_toy
 
 all: link
 	python3 setup.py build_ext --build-lib=../build/lib --build-temp=../build/python
@@ -10,7 +11,7 @@ notebook: link
 	jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root
 
 link:
-	export LD_LIBRARY_PATH=:/home/bargea.linux/py_fortran_toy/build/lib/:$(LD_LIBRARY_PATH)
+	export LD_LIBRARY_PATH=:$(DIR)/build/lib/:$(LD_LIBRARY_PATH)
 
 clean:
 	-rm *.dat *.out
